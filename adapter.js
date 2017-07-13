@@ -52,7 +52,7 @@ function postData(data) {
   }
 
 function createUser() {
-  debugger
+
   $('#signup').submit(function(event) {
   event.preventDefault();
   let values = $(this).serialize()
@@ -69,7 +69,7 @@ function createUser() {
 }
 
 function grabPortfolio() {
-  debugger
+  // $('#chart').show()
   $('#portfolioForm').on('submit', '#portForm', function(event) {
     event.preventDefault();
     let selections = document.querySelectorAll('.portfolio')
@@ -79,7 +79,28 @@ function grabPortfolio() {
         chosen.push(company.value)
       }
     })
-    debugger
+
+    let userPortfolio=[];
+     for (let i=0; i<chartArray.length; i++) {
+       for (let j=0; j<chosen.length; j++) {
+         if (chartArray[i][0][0].includes(chosen[j])) {
+           userPortfolio.push(chartArray[i])
+         }
+       }
+     }
+  
+
+      chart.unload();
+     for(let k=0; k<userPortfolio.length; k++){
+        chart.load({
+        columns:[
+            userPortfolio[k][0],
+            userPortfolio[k][1]
+        ],
+    });
+     }
+
+
   })
 }
 
@@ -89,15 +110,15 @@ class MyForm {
     return (
     `<form id="portForm">
       <div>
-        <input type="checkbox" class="portfolio" name="subscribe" value="apple">
+        <input type="checkbox" class="portfolio" name="subscribe" value="Apple">
         <label for="subscribeNews">Apple</label>
-         <input type="checkbox" class="portfolio" name="subscribe" value="amazon">
+         <input type="checkbox" class="portfolio" name="subscribe" value="Amazon">
         <label for="subscribeNews">Amazon</label>
-          <input type="checkbox" class="portfolio" name="subscribe" value="google">
+          <input type="checkbox" class="portfolio" name="subscribe" value="Google">
         <label for="subscribeNews">Google</label>
-         <input type="checkbox" class="portfolio" name="subscribe" value="facebook">
+         <input type="checkbox" class="portfolio" name="subscribe" value="Facebook">
         <label for="subscribeNews">Facebook</label>
-        <input type="checkbox" class="portfolio" name="subscribe" value="microsoft">
+        <input type="checkbox" class="portfolio" name="subscribe" value="Microsoft">
         <label for="subscribeNews">Microsoft</label>
       </div>
       <div>
@@ -135,7 +156,6 @@ function filterData(data, companyName){
 }
 
 function ourAPI(){
-debugger
 $.get('http://localhost:3000/stocks',function(data){
   console.log(data)
   let amazon = filterData(data, 'Amazon')
@@ -149,21 +169,13 @@ $.get('http://localhost:3000/stocks',function(data){
   
 }
 
-function chart(chartArray){
+// function chart(dataPoint){
+  
   var chart = c3.generate({
     bindto: '#chart',
     data: {
       columns: [
-        chartArray[0][0],
-        chartArray[0][1],
-        chartArray[1][0],
-        chartArray[1][1],
-        chartArray[2][0],
-        chartArray[2][1],
-        chartArray[3][0],
-        chartArray[3][1], 
-        chartArray[4][0],
-        chartArray[4][1],        
+
       ]
     },
     axis: {
@@ -183,8 +195,8 @@ function chart(chartArray){
     }
 
 });
-
-}
+  
+// }
 
    
 
