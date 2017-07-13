@@ -73,16 +73,38 @@ function createUser() {
   })
 }
 
+function startPlaybackGunit() {
+  return document.querySelector('#gunit').play();
+}
+
+function startPlaybackSweedish() {
+  return document.querySelector('#sweedish').play();
+}
+
+
 function grabPortfolio() {
   $('#chart').show()
   $('#portfolioForm').on('click', '#buttn', function(event) {
     event.preventDefault();
-    debugger
+    startPlaybackGunit().then(function() {
+      console.log('The play() Promise fulfilled! Rock on!');
+    }).catch(function(error) {
+      console.log('The play() Promise rejected!');
+      console.log('Use the Play button instead.');
+      console.log(error);
+    })
     if (!!event.target.dataset.clear) {
       let clearForm = new MyForm()
       $('#portfolioForm').empty()
       $('#portfolioForm').append(clearForm.render())
       chart.unload()
+      startPlaybackSweedish().then(function() {
+        console.log('The play() Promise fulfilled! Rock on!');
+      }).catch(function(error) {
+        console.log('The play() Promise rejected!');
+        console.log('Use the Play button instead.');
+        console.log(error);
+      })
     }
     let selections = document.querySelectorAll('#portfolio')
     let chosen = []
@@ -119,6 +141,8 @@ class MyForm {
     return (
     `<form class="ui form">
       <div class="ui center aligned segment">
+        <audio id="gunit" src="./sounds/50_5.mp3" type="audio/mp3"></audio>
+        <audio id="sweedish" src="./sounds/dontworry.mp3" type="audio/mp3"></audio>
         <button class="ui button" id="buttn" type="submit" data-create="create">Invest</button>
         <button class="ui button" id="buttn" type="submit" data-clear="clear">Clear</button>
       </div>
