@@ -1,8 +1,54 @@
 #username {
   text-align: center;
-  margin: 15px;
+  background-color: black;
+  color: white;
 }
 
 .ui.form {
   margin: auto;
+}
+
+#portfolioForm > form > div.ui.center.aligned.segment {
+    background-color: black;
+}
+
+/*#portfolioForm > form > div.ui.centered.cards > div:nth-child(-n+8) {
+    background-color: black;
+    color: white;
+}*/
+
+#portfolioForm > form > div.ui.centered.cards {
+    background-color: black;
+    color: white;
+}
+
+#chart > svg {
+    background-color: black;
+    color: white;
+}
+
+.c3 .c3-axis-x path, .c3 .c3-axis-x line {
+  fill: white;
+  stroke-width: 0.1;
+}
+.c3 .c3-axis-y path, .c3 .c3-axis-y line {
+  fill: white;
+  stroke-width: 0.1;
+}
+
+.c3-axis-y text {
+  font-family: 'Poppins', sans-serif;
+   fill: white;
+   font-size:12px;
+}
+.c3-axis-x text {
+  font-family: 'Poppins', sans-serif;
+    font-size:16px;
+    fill:white;
+}
+
+.c3-legend-item {
+  font-family: 'Poppins', sans-serif;
+  fill: white;
+  font-size: 18px;
 }
