@@ -21,33 +21,39 @@
   </head>
 
   <body>
-
-  <form id='signup' class="ui form">
-  <div class="field">
-    <label>First Name</label>
-    <input type="text" name="user[name]" placeholder="First Name">
-  </div>
-  <div class="field">
-    <label>Email</label>
-    <input type="text" name="user[email]" placeholder="Email">
-  </div>
-  <button class="ui button" type="submit">Submit</button>
-</form>
-    <div class="ui secondary pointing menu">
-
-
-      <div>
-          <h1 id="username"></h1>
-      
+    <div class="ui mini modal">
+      <div class="ui icon header">
+        <img src="http://pngimg.com/uploads/dollar_sign/dollar_sign_PNG26.png?i=1">
+        Get Rich or Die Tryin'
       </div>
+      <div class="content center">
+        <form class="ui form" id="signup">
+          <div class="fields">
+            <div class="field">
+              <label>Name:</label>
+              <input type="text" placeholder="Name" name="user[name]">
+            </div>
+            <div class="field">
+              <label>Email:</label>
+              <input type="text" placeholder="example@example.com" name="user[email]">
+            </div>
+          </div>
+      </div>
+      <div class="actions">
+        <button class="ui green ok inverted button" id="buttn" type="submit" data-create="create">Sign Up</button>
+      </div>
+    </form>
     </div>
 
-  <div id="portfolioForm">
-    
-  </div>
+    <div>
+      <h1 id="username"></h1>
+    </div>
 
-      <div id="chart"></div>
+    <div id="chart" align="center"></div>
 
+    <div id="portfolioForm">
+
+    </div>
     <script type="text/javascript" src="adapter.js"></script>
     <script type="text/javascript" src="index.js"></script>
   </body>
